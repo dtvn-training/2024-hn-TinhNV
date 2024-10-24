@@ -1,0 +1,28 @@
+Từ input data xuất ra file Output.csv với các field như sau:
+- Date: Lấy từ field {Date} file Tracking_data.csv, Xuất ra với định dạng dd-MM-yyyy (Ex: 08-06-2023)
+- Student name: Lấy từ field {name} file Student.csv (Dựa trên Student ID lấy được từ tracking code trong file Tracking_data.csv)
+- Subject name: Lấy từ field {Subject name} ở file Subject.csv (Dựa trên Subject ID lấy được từ tracking code trong file Tracking_data.csv)
+- Point: Lấy được từ tracking_code trong file Tracking_data.csv
+
+Template tracking_code:
+std_({Student ID})_sub_({Subject ID})_pt_({Point})
+Ex:
+std_(001)_sub_(S001)_pt_(8)
+=> Student ID = 001
+=> Subject ID = S001
+=> Point = 8
+
+*** Với file Tracking_data.csv được lấy theo ngày trong file config.properties
+*** File output xuất ra theo định dạng Output_yyyyMMdd.csv (yyyyMMdd là ngày xử lý của file Tracking_data.csv được lấy từ config)
+
+
+Tương tự như task 3 nhưng có thêm các yêu cầu sau:
+Đọc file có dạng: Tracking_data_yyyyMMdd.csv 
+Truyền Param {DATE} khi run job dạng yyyyMMdd-yyyyMMdd
+Ex: 
+- DATE = 20230607-20230607 (Single date)
+  => Đọc và xử lý data cho file Tracking_data_20230607.csv 
+  => Xuất file Output_20230607.csv
+- DATE = 20230607-20230609 (Multi date)
+  => Đọc và xử lý data cho file Tracking_data_20230607.csv, Tracking_data_20230608.csv, Tracking_data_20230609.csv 
+  => Xuất ra file Output_20230607.csv, Output_20230608.csv, Output_20230609.csv
